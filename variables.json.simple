@@ -5,6 +5,7 @@
     "project_id": "xxx",
     "source_image": "centos-7-v20161212",
     "source_image_project_id": "centos-cloud",
+    "disk_size": 50,
     "zone": "us-east1-b",
     "ssh_username": "{{user `ssh_username`}}"
   }],
