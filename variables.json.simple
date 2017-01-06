@@ -1,0 +1,30 @@
+{
+  "builders": [{
+    "type": "googlecompute",
+    "account_file": "xxx.json",
+    "project_id": "xxx",
+    "source_image": "centos-7-v20161212",
+    "source_image_project_id": "centos-cloud",
+    "zone": "us-east1-b",
+    "ssh_username": "{{user `ssh_username`}}"
+  }],
+ "provisioners": [
+        {
+          "type": "shell",
+          "inline": [
+            "sleep 3",
+            "echo 'slept for 3 seconds.'"
+          ]
+        },
+        {
+          "type": "file",
+          "source": "scylla_install_gmi",
+          "destination": "scylla_install_gmi"
+        },
+        {
+          "type": "shell",
+          "script": "scylla_install_gmi",
+          "pause_before": "10s"
+        }
+      ]
+}

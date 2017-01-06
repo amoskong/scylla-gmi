@@ -1,0 +1,11 @@
+sudo yum install epel-release -y
+sudo yum install wget -y
+sudo wget -O /etc/yum.repos.d/scylla.repo http://downloads.scylladb.com/rpm/centos/scylla-1.5.repo
+sudo yum remove -y abrt
+sudo yum install -y rsync tcpdump screen wget net-tools
+sudo yum install -y scylla
+sudo /usr/lib/scylla/scylla_setup --ntp-domain amazon --no-coredump-setup --no-sysconfig-setup --no-raid-setup --no-io-setup --no-bootparam-setup
+sudo /usr/lib/scylla/scylla_sysconfig_setup --ami
+sudo /usr/lib/scylla/scylla_bootparam_setup --ami
+sudo systemctl disable scylla-server
+sudo systemctl disable scylla-jmx
